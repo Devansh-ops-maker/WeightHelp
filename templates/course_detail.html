@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="app-shell">
+  <aside class="sidebar">
+    <a class="brand-row" href="/dashboard">
+      <span class="brand-mark small">SP</span>
+      <span>Student Portal</span>
+    </a>
+    <nav>
+      <a href="/dashboard">Courses</a>
+      <button type="button" id="logoutButton">Log out</button>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="page-header">
+      <div>
+        <p class="eyebrow">Course {{ course_code }}</p>
+        <h1>Assessment components</h1>
+      </div>
+      <a class="secondary-action link-button" href="/dashboard">Back to dashboard</a>
+    </header>
+
+    <section class="summary-strip" aria-label="Course summary">
+      <div><span id="componentCount">0</span><small>Components</small></div>
+      <div><span id="weightageTotal">0%</span><small>Total weightage</small></div>
+      <div><span id="courseScore">--</span><small>Weighted score</small></div>
+    </section>
+
+    <section class="workspace-grid">
+      <div class="panel">
+        <div class="panel-heading">
+          <h2>Add component</h2>
+          <p>Log each assessment once the marks are available.</p>
+        </div>
+        <form class="compact-form" id="componentForm" data-course-code="{{ course_code }}">
+          <label>
+            Component
+            <input name="component_type" type="text" placeholder="Midterm, lab, final" required>
+          </label>
+          <label>
+            Weightage %
+            <input name="weightage" type="number" min="0" max="100" step="0.01" placeholder="20" required>
+          </label>
+          <label>
+            Total marks
+            <input name="total_marks" type="number" min="1" step="0.01" placeholder="50" required>
+          </label>
+          <label>
+            Obtained marks
+            <input name="obtained_marks" type="number" min="0" step="0.01" placeholder="42" required>
+          </label>
+          <button class="primary-action" type="submit">Add component</button>
+          <p class="form-message" id="componentMessage"></p>
+        </form>
+      </div>
+
+      <div class="course-area">
+        <div class="section-title">
+          <h2>Marks ledger</h2>
+          <p>Review all assessment entries for this course.</p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Component</th>
+                <th>Weightage</th>
+                <th>Total</th>
+                <th>Obtained</th>
+                <th>Score</th>
+              </tr>
+            </thead>
+            <tbody id="componentRows"></tbody>
+          </table>
+        </div>
+        <div class="empty-state" id="emptyState">
+          <h3>No components yet</h3>
+          <p>Add quizzes, assignments, labs, or exams to calculate progress.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  initCourseDetailPage({{ course_code }});
+</script>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block body %}
+<main class="auth-shell">
+  <section class="auth-panel">
+    <div class="brand-mark">SP</div>
+    <p class="eyebrow">Student Progress Portal</p>
+    <h1>Create your student workspace.</h1>
+    <p class="auth-copy">Use this account to manage your courses and assessment components privately.</p>
+
+    <form class="form-stack" id="registerForm">
+      <label>
+        Username
+        <input name="username" type="text" autocomplete="username" placeholder="Choose a username" required>
+      </label>
+      <label>
+        Password
+        <input name="password" type="password" autocomplete="new-password" placeholder="Create a password" required>
+      </label>
+      <button class="primary-action" type="submit">Create account</button>
+      <p class="form-message" id="formMessage"></p>
+    </form>
+
+    <p class="switch-link">Already registered? <a href="/">Sign in</a></p>
+  </section>
+
+  <aside class="campus-panel alt">
+    <div>
+      <p class="panel-kicker">Built for coursework</p>
+      <h2>Record marks as they arrive, not at the end of the term.</h2>
+    </div>
+    <div class="check-list">
+      <span>Course-wise assessment tracking</span>
+      <span>Weighted component overview</span>
+      <span>Simple student-first dashboard</span>
+    </div>
+  </aside>
+</main>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  initRegisterPage();
+</script>
+{% endblock %}

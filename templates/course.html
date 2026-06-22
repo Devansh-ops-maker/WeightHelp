@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Course Components</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+
+```
+<div class="course-header">
+
+    <h1>{{ course_name }}</h1>
+
+    <button>
+        + Add Component
+    </button>
+
+</div>
+
+<table>
+
+    <thead>
+        <tr>
+            <th>Component</th>
+            <th>Weightage</th>
+            <th>Total</th>
+            <th>Obtained</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        {% for component in components %}
+
+        <tr>
+
+            <td>
+                {{ component.component_type }}
+            </td>
+
+            <td>
+                {{ component.weightage }}%
+            </td>
+
+            <td>
+                {{ component.total_marks }}
+            </td>
+
+            <td>
+                {{ component.obtained_marks }}
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+</table>
+```
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block body %}
+<main class="auth-shell">
+  <section class="auth-panel">
+    <div class="brand-mark">SP</div>
+    <p class="eyebrow">Student Progress Portal</p>
+    <h1>Welcome back to your study desk.</h1>
+    <p class="auth-copy">Track courses, assessment marks, and grade weightage in one calm workspace.</p>
+
+    <form class="form-stack" id="loginForm">
+      <label>
+        Username
+        <input name="username" type="text" autocomplete="username" placeholder="e.g. rahul_23" required>
+      </label>
+      <label>
+        Password
+        <input name="password" type="password" autocomplete="current-password" placeholder="Your password" required>
+      </label>
+      <button class="primary-action" type="submit">Sign in</button>
+      <p class="form-message" id="formMessage"></p>
+    </form>
+
+    <p class="switch-link">New student? <a href="/register-page">Create an account</a></p>
+  </section>
+
+  <aside class="campus-panel">
+    <div>
+      <p class="panel-kicker">Semester snapshot</p>
+      <h2>Keep every quiz, lab, and final in view.</h2>
+    </div>
+    <div class="metric-grid">
+      <div><strong>04</strong><span>Active courses</span></div>
+      <div><strong>12</strong><span>Components logged</span></div>
+      <div><strong>86%</strong><span>Target average</span></div>
+    </div>
+  </aside>
+</main>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  initLoginPage();
+</script>
+{% endblock %}
